@@ -1,112 +1,109 @@
 # 🧠 Preguntas sobre Django, CRUD y Arquitectura de Software
 
-## 1. ¿Qué es un CRUD y cuál es su propósito en el desarrollo de aplicaciones web?
+---
 
-- CRUD es el acrónimo que representa las 4 operaciones básicas que se realizan sobre los datos en una BBDD : CREAR (Create), LEER (Read), ACTUALIZAR(Update) y BORRAR (Delete).
-  Propósito: Facilita la gestión de información desde la interfaz de usuario hacia la base de datos y viceversa.
+## 1️⃣ ¿Qué es un CRUD y cuál es su propósito en el desarrollo de aplicaciones web?
+
+🔄 **CRUD** es el acrónimo de las 4 operaciones básicas sobre una base de datos:
+
+- 🟢 **Create (Crear)**
+- 🔵 **Read (Leer)**
+- 🟠 **Update (Actualizar)**
+- 🔴 **Delete (Eliminar)**
+
+📌 **Propósito**: Facilita la gestión de información entre la interfaz del usuario y la base de datos.
 
 ---
 
-## 2. ¿Qué son los patrones de arquitectura en desarrollo de software?
+## 2️⃣ ¿Qué son los patrones de arquitectura en desarrollo de software?
 
-- Son estructuras reutilizables que organizan el código de una aplicación para hacerlo más escalable, mantenible y legible.
+🧱 Son estructuras reutilizables que organizan el código para hacerlo más:
 
-- ¿Qué es el patrón MVC (Modelo–Vista–Controlador)?
+- 📈 Escalable
+- 🔧 Mantenible
+- 👁️‍🗨️ Legible
 
-- **Modelo**: representa los datos y la lógica de negocio.
-- **Vista**: contiene la lógica que recibe las peticiones del usuario y devuelve respuestas.
-- **Controlador**: recibe las solicitudes del usuario y coordina el modelo y la vista.
+### 🧩 ¿Qué es el patrón MVC (Modelo–Vista–Controlador)?
 
-- ¿Qué es el patrón MVT (Modelo–Vista–Template)?
+- 📦 **Modelo**: Representa los datos y la lógica de negocio.
+- 🧠 **Vista**: Contiene la lógica que recibe las peticiones del usuario y devuelve respuestas.
+- 🕹️ **Controlador**: Coordina las acciones entre el modelo y la vista.
 
-- **Modelo**: representa los datos y lógica de negocio.
-- **Vista**: contiene la lógica que recibe peticiones y devuelve respuestas.
-- **Template**: define cómo se muestra la información al usuario (HTML)
+### 🧩 ¿Qué es el patrón MVT (Modelo–Vista–Template)?
 
-- ¿Cuáles son las diferencias entre MVC y MVT?
+- 📦 **Modelo**: Representa los datos y lógica de negocio.
+- 🧠 **Vista**: Recibe peticiones y devuelve respuestas.
+- 🖼️ **Template**: Define cómo se muestra la información al usuario (HTML).
 
-| Elemento    | MVC                   | MVT                            |
-| ----------- | --------------------- | ------------------------------ |
-| Vista       | Lógica + presentación | Lógica (View en Django)        |
-| Template    | No existe como tal    | Sí, HTML con lógica            |
-| Controlador | Controlador separado  | Framework lo gestiona (Django) |
+### ⚖️ Diferencias entre MVC y MVT:
 
-- ¿Cuál de estos dos patrones se usa en Django?
+| Elemento    | MVC                   | MVT                             |
+| ----------- | --------------------- | ------------------------------- |
+| Vista       | Lógica + presentación | Solo lógica (View en Django)    |
+| Template    | No existe como tal    | Sí (HTML con lógica)            |
+| Controlador | Independiente         | Lo gestiona Django internamente |
 
---- MVT (Modelo–Vista–Template)
+### ✅ ¿Cuál se usa en Django?
 
-## 3. ¿Cómo se estructura un proyecto en Django?
-
-- Un proyecto Django se compone de apps que tienen esta estructura típica:
-
-- models.py: define las estructuras de datos (tablas de base de datos).
-
-- views.py: maneja la lógica de las peticiones.
-
-- templates/: contiene los archivos HTML que ve el usuario.
-
-- urls.py: define las rutas que conectan URLs con vistas.
-
-- ¿Para qué se usa el signo `{% %}` en los templates?
-
-- **{{ variable }}** : se usa para mostrar datos dinámicos (por ejemplo, {{ nombre }}).
-- **{% tag %}**: se usa para lógica del template (por ejemplo, {% if %}, {% for %}, {% url %}, etc.).
-
-## 4. ¿Cuál es el flujo de datos entre un formulario HTML y la base de datos en Django?
-
---- El usuario rellena el formulario en HTML.
-
---- El formulario se envía por POST a una URL.
-
---- Django recibe la petición en una vista.
-
---- La vista valida y guarda los datos usando un modelo o un ModelForm.
-
---- Los datos se guardan en la base de datos.
-
---- La vista responde al usuario con un template HTML actualizado o redirecciona.
-
-## 5. ¿Qué herramientas o comandos ofrece Django para facilitar el desarrollo de un CRUD?
-
-Django ofrece una serie de comandos y herramientas que simplifican la creación y gestión de aplicaciones web con operaciones CRUD. A continuación se detallan las más importantes:
-
-### ¿Para qué sirve cada uno?
-
-- `startapp`  
-  Crea una nueva aplicación Django dentro del proyecto. Cada app encapsula una funcionalidad concreta (por ejemplo, usuarios, productos, blog, etc.).
-
-- `makemigrations`  
-  Crea archivos de migración a partir de los cambios realizados en los modelos (definiciones de tablas en la base de datos).
-
-- `migrate`  
-  Aplica las migraciones pendientes a la base de datos, creando o actualizando las tablas y relaciones.
-
-- `runserver`  
-  Lanza el servidor de desarrollo de Django en `localhost:8000` por defecto para probar la aplicación.
-
-- `ModelForm`  
-  Una clase que genera automáticamente formularios HTML basados en modelos definidos. Facilita la validación y el guardado de datos del formulario.
-
-- `admin`  
-  Permite registrar modelos y gestionarlos desde una interfaz gráfica preconstruida. Muy útil para administración interna del sitio.
-
-- `createsuperuser`  
-  Crea un usuario administrador que puede acceder al panel de administración (`/admin`) y gestionar todos los modelos registrados.
-
-- **Otros comandos útiles**:
-
-  - `shell`: Abre una consola interactiva para manipular directamente los modelos y datos.
-  - `loaddata` / `dumpdata`: Cargar y guardar datos en formato JSON (útil para backups y pruebas).
-  - `collectstatic`: Recolecta archivos estáticos para servirlos en producción.
-  - `test`: Ejecuta los tests unitarios del proyecto.
+🎯 **MVT (Modelo–Vista–Template)**
 
 ---
 
-## 6. ¿Cómo funciona el Admin de Django?
+## 3️⃣ ¿Cómo se estructura un proyecto en Django?
 
-El panel de administración de Django permite gestionar todos los modelos registrados a través de una interfaz gráfica web segura y lista para usar.
+📁 Un proyecto Django se compone de apps con la siguiente estructura típica:
 
-### Funcionamiento del admin – Formato `README.md`
+- `models.py` → Define las estructuras de datos (tablas).
+- `views.py` → Contiene la lógica para manejar peticiones.
+- `templates/` → Contiene archivos HTML para la interfaz del usuario.
+- `urls.py` → Define las rutas que conectan URLs con vistas.
+
+### 🧠 ¿Para qué se usa `{% %}` y `{{ }}` en templates?
+
+- `{{ variable }}` → Muestra datos dinámicos (por ejemplo, `{{ nombre }}`).
+- `{% tag %}` → Controla la lógica del template (por ejemplo: `{% if %}`, `{% for %}`, `{% url %}`).
+
+---
+
+## 4️⃣ ¿Cuál es el flujo de datos entre un formulario HTML y la base de datos en Django?
+
+1. 📝 El usuario rellena un formulario en HTML.
+2. 📤 El formulario se envía por `POST` a una URL.
+3. 📬 Django recibe la petición en una vista.
+4. ✅ La vista valida y guarda los datos usando un modelo o `ModelForm`.
+5. 🗃️ Los datos se guardan en la base de datos.
+6. 📄 La vista responde con un `template` actualizado o redirige.
+
+---
+
+## 5️⃣ ¿Qué herramientas o comandos ofrece Django para facilitar el desarrollo de un CRUD?
+
+🔧 Django facilita el desarrollo de operaciones CRUD con las siguientes herramientas y comandos:
+
+### 🔍 ¿Para qué sirve cada uno?
+
+- 📦 `startapp` → Crea una nueva aplicación Django.
+- 🛠️ `makemigrations` → Genera archivos de migración según los modelos.
+- 🧱 `migrate` → Aplica las migraciones a la base de datos.
+- 🚀 `runserver` → Inicia el servidor local de desarrollo.
+- 📝 `ModelForm` → Genera formularios automáticamente desde modelos.
+- 🧑‍💼 `admin` → Panel gráfico para gestionar modelos fácilmente.
+- 🔐 `createsuperuser` → Crea un usuario administrador para acceder al panel de administración.
+
+### 🧰 Otros comandos útiles
+
+- 🐚 `shell` → Abre consola interactiva de Python con acceso a los modelos.
+- 📥 `loaddata` / 📤 `dumpdata` → Importa y exporta datos en formato JSON.
+- 📦 `collectstatic` → Recolecta archivos estáticos para producción.
+- 🧪 `test` → Ejecuta tests del proyecto.
+
+---
+
+## 6️⃣ ¿Cómo funciona el Admin de Django?
+
+🧑‍💻 El **Admin de Django** es una interfaz web lista para usar que permite administrar fácilmente los modelos registrados.
+
+### 📘 Funcionamiento del Admin – Formato `README.md`
 
 ````markdown
 # 🛠️ Django Admin Panel
@@ -115,10 +112,10 @@ El **Admin de Django** es una interfaz web automática y personalizable que perm
 
 ## 🚀 ¿Qué puedes hacer con el admin?
 
-- Ver, agregar, editar y eliminar registros de cualquier modelo.
-- Administrar usuarios, grupos y permisos.
-- Buscar y filtrar registros fácilmente.
-- Personalizar la visualización de los modelos en la interfaz.
+- 📄 Ver, agregar, editar y eliminar registros de cualquier modelo.
+- 👥 Administrar usuarios, grupos y permisos.
+- 🔍 Buscar y filtrar registros.
+- 🖼️ Personalizar la visualización de modelos.
 
 ## ⚙️ ¿Cómo se activa?
 
